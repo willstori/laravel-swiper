@@ -57,9 +57,11 @@
             }
         });
 
-        /* Isto funciona, porém acaba fazendo muitas chamadas ao método de update */
-        Livewire.hook('morph.updated', ({ el, component }) => {
-            window.swiper.update();
+        /* Isto também funciona, porém acaba perdendo a suavidade ao trocar de tipos */
+        $wire.on('refresh-banners', () => {
+            setTimeout(() => {
+                window.swiper.update();
+            }, 1);
         });
     </script>
 @endscript
