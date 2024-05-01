@@ -57,8 +57,8 @@
             }
         });
 
-        /* Parece que o evento é acionado antes da carga completa do DOM */
-        $wire.on('refresh-banners', () => {
+        /* Isto funciona, porém acaba fazendo muitas chamadas ao método de update */
+        Livewire.hook('morph.updated', ({ el, component }) => {
             window.swiper.update();
         });
     </script>
